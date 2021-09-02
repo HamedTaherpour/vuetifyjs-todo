@@ -11,10 +11,11 @@
 
       <div class="d-flex align-center">
         <v-switch
+            v-model="$vuetify.theme.dark"
             inset
             color="blue"
-            prepend-icon="mdi-weather-night"
-            append-icon="mdi-white-balance-sunny"
+            append-icon="mdi-weather-night"
+            prepend-icon="mdi-white-balance-sunny"
             hide-details
         ></v-switch>
         <v-btn icon>
@@ -25,6 +26,7 @@
 
     <v-navigation-drawer
         app
+        color="primary"
         :permanent="permanent"
         :mini-variant.sync="toggleMin"
         v-model="drawer">

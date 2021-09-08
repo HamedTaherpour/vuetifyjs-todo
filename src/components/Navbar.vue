@@ -87,9 +87,8 @@ export default {
     toggleMin: false,
     items: [
       {text: 'Dashboard', icon: 'mdi-view-dashboard', link: '/'},
-      {text: 'Galley', icon: 'mdi-image-multiple', link: '/galley'},
-      {text: 'User', icon: 'mdi-account-circle', link: '/user'},
-      {text: 'Setting', icon: 'mdi-cog', link: '/setting'},
+      {text: 'My Project', icon: 'mdi-folder', link: '/project'},
+      {text: 'Team', icon: 'mdi-account', link: '/team'},
     ],
   }),
 

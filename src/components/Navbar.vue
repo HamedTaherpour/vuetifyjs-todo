@@ -13,7 +13,9 @@
         <v-switch
             v-model="$vuetify.theme.dark"
             inset
+            dense
             color="blue"
+            class="mr-5"
             append-icon="mdi-weather-night"
             prepend-icon="mdi-white-balance-sunny"
             hide-details
@@ -32,7 +34,7 @@
 
       <div class="d-flex flex-column fill-height justify-space-between">
         <div>
-          <v-list>
+          <v-list dense>
             <v-list-item>
               <v-list-item-avatar size="25">
                 <v-img

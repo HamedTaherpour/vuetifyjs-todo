@@ -5,20 +5,21 @@
       <v-card class="pa-3" v-for="project in projects" :key="project.title">
         <v-row class="project" :class="project.status">
           <v-col cols="12" md="6">
-            <div class="caption">Project title</div>
-            <div v-text="project.title">vue</div>
+            <div class="caption grey--text">Project title</div>
+            <div v-text="project.title"></div>
           </v-col>
           <v-col cols="6" sm="4" md="2">
-            <div class="caption">Developer</div>
-            <div v-text="project.developer">vue</div>
+            <div class="caption grey--text">Developer</div>
+            <div v-text="project.developer"></div>
           </v-col>
           <v-col cols="6" sm="4" md="2">
-            <div class="caption">Date</div>
-            <div v-text="project.date">vue</div>
+            <div class="caption grey--text">Date</div>
+            <div v-text="project.date"></div>
           </v-col>
           <v-col cols="12" sm="4" md="2">
-            <div class="caption">Status</div>
-            <div v-text="project.status">vue</div>
+            <div class="float-right">
+              <v-chip :class="project.status" class="white--text caption my-2" v-text="project.status"></v-chip>
+            </div>
           </v-col>
         </v-row>
       </v-card>
@@ -53,4 +54,15 @@ export default {
   border-left: 4px solid tomato;
 }
 
+.v-chip.done {
+  background: #3cd1c2 !important;
+}
+
+.v-chip.doing {
+  background: #ffaa2c !important;
+}
+
+.v-chip.bugs {
+  background: #f83e70 !important;
+}
 </style>

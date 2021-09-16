@@ -4,14 +4,34 @@
     <v-container class="my-6">
 
       <div class="mb-3">
-        <v-btn class="mr-2" small text @click="sortBy('title')">
-          <v-icon small left>mdi-folder</v-icon>
-          <span class="caption text-lowercase">By project title</span>
-        </v-btn>
-        <v-btn small text @click="sortBy('developer')">
-          <v-icon small left>mdi-account</v-icon>
-          <span class="caption text-lowercase">By developer</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn class="mr-2"
+                   small
+                   text
+                   @click="sortBy('title')"
+                   v-bind="attrs"
+                   v-on="on">
+              <v-icon small left>mdi-folder</v-icon>
+              <span class="caption text-lowercase">By project title</span>
+            </v-btn>
+          </template>
+          <span>Sort by project title</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+                small
+                text
+                @click="sortBy('developer')"
+                v-bind="attrs"
+                v-on="on">
+              <v-icon small left>mdi-account</v-icon>
+              <span class="caption text-lowercase">By developer</span>
+            </v-btn>
+          </template>
+          <span>Sort by developer</span>
+        </v-tooltip>
       </div>
 
       <v-card class="pa-3" v-for="project in projects" :key="project.title">
@@ -53,7 +73,7 @@ export default {
 
   methods: {
     sortBy(prop) {
-      this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
+      this.projects.sort((a, b) => a[prop] < b[prop] ? -1 : 1)
     }
   }
 

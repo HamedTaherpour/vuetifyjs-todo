@@ -2,6 +2,18 @@
   <div class="fill-height pa-5">
     <h2 class="subtitle-2 grey--text">Dashboard</h2>
     <v-container class="my-6">
+
+      <div class="mb-3">
+        <v-btn class="mr-2" small text @click="sortBy('title')">
+          <v-icon small left>mdi-folder</v-icon>
+          <span class="caption text-lowercase">By project title</span>
+        </v-btn>
+        <v-btn small text @click="sortBy('developer')">
+          <v-icon small left>mdi-account</v-icon>
+          <span class="caption text-lowercase">By developer</span>
+        </v-btn>
+      </div>
+
       <v-card class="pa-3" v-for="project in projects" :key="project.title">
         <v-row class="project" :class="project.status">
           <v-col cols="12" md="6">
@@ -37,7 +49,14 @@ export default {
       {title: 'Design video thumbnails', developer: 'Ryu', date: '20th Dec 2018', status: 'done'},
       {title: 'Create a community forum', developer: 'Gouken', date: '20th Oct 2018', status: 'bugs'},
     ]
-  })
+  }),
+
+  methods: {
+    sortBy(prop) {
+      this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
+    }
+  }
+
 }
 </script>
 

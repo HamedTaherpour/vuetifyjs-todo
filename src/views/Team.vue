@@ -5,10 +5,12 @@
       <v-row>
         <v-col cols="12" sm="6" md="4" lg="3" v-for="person in team" :key="person.name">
           <v-card outlined class="text-center">
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
+            <v-avatar class="mt-5" size="100">
+              <v-img
+                  :src="person.avatar"
+                  :alt="person.name"
+              ></v-img>
+            </v-avatar>
             <v-card-title class="d-block" v-text="person.name"></v-card-title>
             <v-card-subtitle v-text="person.role"></v-card-subtitle>
             <v-card-text v-text="person.bio"></v-card-text>
@@ -30,11 +32,36 @@ export default {
   name: "Team",
   data: () => ({
     team: [
-      {name: 'Hamed Taherpour', role: 'Web developer', bio: 'I love Vue ❤️'},
-      {name: 'Maggie Appleton', role: 'Graphic designer', bio: 'Art Director & Illustrator'},
-      {name: 'John Leider', role: 'Web developer', bio: 'CEO and Author of Vuetify'},
-      {name: 'Gouken', role: 'Social media maverick', bio: 'Enjoy life'},
-      {name: 'Yoshi', role: 'Sales guru', bio: '💻💰⚖️'}
+      {
+        name: 'Hamed Taherpour',
+        role: 'Web developer',
+        bio: 'I love Vue ❤️',
+        avatar: './image/avatar/hamed_taherpour.jpg'
+      },
+      {
+        name: 'Maggie Appleton',
+        role: 'Graphic designer',
+        bio: 'Art Director & Illustrator',
+        avatar: './image/avatar/maggie_appleton.png'
+      },
+      {
+        name: 'John Leider',
+        role: 'Web developer',
+        bio: 'CEO and Author of Vuetify',
+        avatar: './image/avatar/john_leider.png'
+      },
+      {
+        name: 'Gouken',
+        role: 'Social media maverick',
+        bio: 'Enjoy life',
+        avatar: './image/avatar/gouken.jpg'
+      },
+      {
+        name: 'Yoshi',
+        role: 'Sales guru',
+        bio: '💻💰⚖️',
+        avatar: './image/avatar/yoshi.jpg'
+      },
     ]
   })
 }

@@ -9,6 +9,20 @@
 
       <v-spacer></v-spacer>
 
+      <v-menu offset-y transition="slide-y-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn tile depressed
+                 class="mr-3"
+                 v-bind="attrs"
+                 v-on="on">Menu</v-btn>
+        </template>
+        <v-list>
+          <v-list-item v-for="(item, index) in items" :key="index" :to="item.link">
+            <v-list-item-title v-text="item.text"></v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <div class="d-flex align-center">
         <v-switch
             v-model="$vuetify.theme.dark"

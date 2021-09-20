@@ -1,7 +1,26 @@
 <template>
   <div class="fill-height pa-5">
+
+    <v-dialog
+        v-model="dialog"
+        persistent
+        transition="dialog-bottom-transition"
+    >
+      <v-card>
+        <v-card-title>Add New Project</v-card-title>
+        <v-card-text>
+          Form
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="dialog = false" outlined>Cancel</v-btn>
+          <v-btn @click="dialog = false" color="blue">Add</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <h2 class="subtitle-2 grey--text">Project</h2>
     <v-container class="my-6">
+      <v-btn class="mb-3" color="primary" @click="dialog = !dialog">New Project</v-btn>
       <v-expansion-panels accordion>
         <v-expansion-panel v-for="project in projects" :key="project.title">
           <v-expansion-panel-header>{{ project.title }}</v-expansion-panel-header>
@@ -19,6 +38,7 @@
 export default {
   name: "Project",
   data: () => ({
+    dialog: true,
     projects: [
       {
         title: 'Design a new website',

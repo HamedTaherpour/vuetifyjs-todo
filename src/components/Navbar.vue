@@ -41,6 +41,7 @@
     </v-app-bar>
 
     <v-navigation-drawer
+        right
         app
         :permanent="permanent"
         :mini-variant.sync="toggleMin"
@@ -102,10 +103,10 @@ export default {
     drawer: false,
     toggleMin: false,
     items: [
-      {text: 'Dashboard', icon: 'mdi-view-dashboard', link: '/'},
-      {text: 'My Project', icon: 'mdi-folder', link: '/project'},
-      {text: 'Team', icon: 'mdi-account', link: '/team'},
-      {text: 'User', icon: 'mdi-account-multiple-outline', link: '/user'},
+      {text: 'داشبورد', icon: 'mdi-view-dashboard', link: '/'},
+      {text: 'پروژه های من', icon: 'mdi-folder', link: '/project'},
+      {text: 'تیم', icon: 'mdi-account', link: '/team'},
+      {text: 'کاربران', icon: 'mdi-account-multiple-outline', link: '/user'},
     ],
   }),
 
@@ -118,9 +119,9 @@ export default {
   computed: {
     minIcon() {
       if (this.toggleMin)
-        return ' mdi-chevron-right'
-      else
         return ' mdi-chevron-left'
+      else
+        return ' mdi-chevron-right'
     },
 
     permanent() {

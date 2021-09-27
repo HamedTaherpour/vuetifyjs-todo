@@ -1,6 +1,6 @@
 <template>
   <div class="fill-height pa-5">
-    <h2 class="subtitle-2 grey--text">User</h2>
+    <h2 class="subtitle-2 grey--text">کاربران</h2>
     <v-container class="my-6">
       <v-card>
         <v-card-title>
@@ -8,7 +8,7 @@
               v-model="search"
               filled
               rounded
-              placeholder="Search"
+              placeholder="جستجو ..."
               clearable
               dense
               hide-details
@@ -21,8 +21,20 @@
               :headers="headers"
               :items="team"
               :search="search"
+              :loading="loading"
               :items-per-page="5"
-          >
+              loading-text="لطفا صبر کنید . . ."
+              no-data-text="رکوردی یافت نشد"
+              :header-props="{
+                sortByText: 'مرتب سازی'
+              }"
+              :footer-props="{
+                pageText: '{0} تا {1} از {2}',
+                itemsPerPageText:'',
+                itemsPerPageAllText:'همه',
+                itemsPerPageOptions:[5,10,15,-1]
+              }">
+            >
             <template v-slot:item.avatar="{item}">
               <v-avatar size="30">
                 <img :src="item.avatar" :title="item.name">
@@ -41,16 +53,23 @@ export default {
   data() {
     return {
       search: null,
+      loading: false,
       headers: [
         {
-          text: 'Name',
+          text: 'نام',
           value: 'name',
         },
-        {text: 'Role', value: 'role'},
-        {text: 'Bio', value: 'bio'},
+        {text: 'سمت', value: 'role'},
+        {text: 'درباره', value: 'bio'},
         {text: '', value: 'avatar', sortable: false},
       ],
-      team: [
+      team: []
+    }
+  },
+  mounted() {
+    this.loading = true;
+    setInterval(() => {
+      this.team = [
         {
           name: 'Hamed Taherpour',
           role: 'Web developer',
@@ -100,8 +119,9 @@ export default {
           avatar: './image/avatar/sarah.jpg'
         },
       ]
-    }
-  },
+      this.loading = false;
+    }, 3000)
+  }
 }
 </script>
 

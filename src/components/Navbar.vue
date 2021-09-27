@@ -105,6 +105,7 @@ export default {
       {text: 'Dashboard', icon: 'mdi-view-dashboard', link: '/'},
       {text: 'My Project', icon: 'mdi-folder', link: '/project'},
       {text: 'Team', icon: 'mdi-account', link: '/team'},
+      {text: 'User', icon: 'mdi-account-multiple-outline', link: '/user'},
     ],
   }),
 

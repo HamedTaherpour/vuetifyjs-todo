@@ -20,13 +20,34 @@
           <v-data-table
               :headers="headers"
               :items="team"
+              :loading="loading"
               :search="search"
               :items-per-page="5"
+              loading-text="Plz wait"
+              no-data-text="no date"
+              :header-props="{
+                sortByText:'Sort'
+              }"
+              :footer-props="{
+                pageText:'{2} a {1}b{0}',
+                itemsPerPageText:'',
+                itemsPerPageAllText:'--',
+                itemsPerPageOptions:[3,6,12,-1],
+              }"
           >
             <template v-slot:item.avatar="{item}">
-              <v-avatar size="30">
-                <img :src="item.avatar" :title="item.name">
-              </v-avatar>
+              <v-tooltip left>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-avatar
+                      size="30"
+                      v-bind="attrs"
+                      v-on="on"
+                  >
+                    <img :src="item.avatar">
+                  </v-avatar>
+                </template>
+                <span v-text="item.name"></span>
+              </v-tooltip>
             </template>
           </v-data-table>
         </v-card-text>
@@ -41,6 +62,7 @@ export default {
   data() {
     return {
       search: null,
+      loading: false,
       headers: [
         {
           text: 'Name',
@@ -50,7 +72,13 @@ export default {
         {text: 'Bio', value: 'bio'},
         {text: '', value: 'avatar', sortable: false},
       ],
-      team: [
+      team: [],
+    }
+  },
+  mounted() {
+    this.loading = true;
+    setInterval(() => {
+      this.team = [
         {
           name: 'Hamed Taherpour',
           role: 'Web developer',
@@ -99,9 +127,10 @@ export default {
           bio: 'comprehension over configuration',
           avatar: './image/avatar/sarah.jpg'
         },
-      ]
-    }
-  },
+      ];
+      this.loading = false;
+    }, 3000)
+  }
 }
 </script>
 

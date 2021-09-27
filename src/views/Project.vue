@@ -10,9 +10,22 @@
       <v-card>
         <v-card-title>Add New Project</v-card-title>
         <v-card-text>
-          <v-form>
-            <v-text-field v-model="title" prepend-icon="mdi-folder" label="Title"></v-text-field>
-            <v-textarea v-model="content" prepend-icon="mdi-grease-pencil" label="Content" rows="3"></v-textarea>
+          <v-form ref="form">
+            <v-text-field
+                v-model="title"
+                prepend-icon="mdi-folder"
+                label="Title"
+                :rules="inputRules"
+            >
+            </v-text-field>
+            <v-textarea
+                v-model="content"
+                prepend-icon="mdi-grease-pencil"
+                label="Content"
+                rows="3"
+                :rules="inputRules"
+            >
+            </v-textarea>
             <v-menu
                 v-model="datePickerMenu"
                 :close-on-content-click="false"
@@ -29,6 +42,7 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
+                    :rules="inputRules"
                 ></v-text-field>
               </template>
               <v-date-picker v-model="date" @input="datePickerMenu = false"></v-date-picker>
@@ -90,6 +104,10 @@ export default {
         date: '20th Oct 2018',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'
       },
+    ],
+    inputRules: [
+      v => !!v || 'This field is required',
+      v => (!!v && v.length >= 3) || 'Minimum length is 3 characters',
     ]
   }),
   computed: {
@@ -99,12 +117,15 @@ export default {
   },
   methods: {
     add() {
-      this.projects.push({
-        title: this.title,
-        content: this.content,
-        date: this.formattedDate,
-      })
-      this.dialog = false;
+      if (this.$refs.form.validate()) {
+        this.projects.push({
+          title: this.title,
+          content: this.content,
+          date: this.formattedDate,
+        })
+        this.$refs.form.reset();
+        this.dialog = false;
+      }
     }
   }
 }

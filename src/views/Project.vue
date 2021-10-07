@@ -8,20 +8,20 @@
         transition="dialog-bottom-transition"
     >
       <v-card>
-        <v-card-title>Add New Project</v-card-title>
+        <v-card-title>اضافه کردن پروژه جدید</v-card-title>
         <v-card-text>
           <v-form ref="form">
             <v-text-field
                 v-model="title"
                 prepend-icon="mdi-folder"
-                label="Title"
+                label="عنوان"
                 :rules="inputRules"
             >
             </v-text-field>
             <v-textarea
                 v-model="content"
                 prepend-icon="mdi-grease-pencil"
-                label="Content"
+                label="محتوا"
                 rows="3"
                 :rules="inputRules"
             >
@@ -37,7 +37,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                     :value="formattedDate"
-                    label="Date"
+                    label="تاریخ"
                     prepend-icon="mdi-calendar"
                     readonly
                     v-bind="attrs"
@@ -50,15 +50,15 @@
           </v-form>
         </v-card-text>
         <v-card-actions>
-          <v-btn small outlined @click="dialog = false">Cancel</v-btn>
-          <v-btn small depressed dark color="blue" @click="add">Add</v-btn>
+          <v-btn small outlined @click="dialog = false">لغو</v-btn>
+          <v-btn small depressed dark color="blue" @click="add">اضافه کردن</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
-    <h2 class="subtitle-2 grey--text">Project</h2>
+    <h2 class="subtitle-2 grey--text">پروژه</h2>
     <v-container class="my-6">
-      <v-btn depressed small class="mb-3" color="primary" @click="dialog = !dialog">New Project</v-btn>
+      <v-btn depressed small class="mb-3" color="primary" @click="dialog = !dialog">اضافه کردن پروژه جدید</v-btn>
       <v-expansion-panels accordion>
         <v-expansion-panel v-for="project in projects" :key="project.title">
           <v-expansion-panel-header>{{ project.title }}</v-expansion-panel-header>
@@ -106,8 +106,8 @@ export default {
       },
     ],
     inputRules: [
-      v => !!v || 'This field is required',
-      v => (!!v && v.length >= 3) || 'Minimum length is 3 characters',
+      v => !!v || 'این فیلد اجباری است',
+      v => (!!v && v.length >= 3) || 'حداقل سه کاراکتر باشد',
     ]
   }),
   computed: {

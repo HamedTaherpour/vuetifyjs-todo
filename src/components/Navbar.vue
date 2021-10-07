@@ -11,10 +11,13 @@
 
       <v-menu offset-y transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn tile depressed
-                 class="mr-3"
-                 v-bind="attrs"
-                 v-on="on">Menu</v-btn>
+          <v-btn
+              tile
+              depressed
+              class="mr-3"
+              v-bind="attrs"
+              v-on="on">منو
+          </v-btn>
         </template>
         <v-list>
           <v-list-item v-for="(item, index) in items" :key="index" :to="item.link">
@@ -56,8 +59,8 @@
                     src="https://toplearn.com/img/user/250x259/4937_66d215c4-ab74-ce7c-587c-39f39a129d68_%D8%AD%D8%A7%D9%85%D8%AF_%D8%B7%D8%A7%D9%87%D8%B1%D9%BE%D9%88%D8%B1.jpg"></v-img>
               </v-list-item-avatar>
               <v-list-item-content>
-                <v-list-item-title class="subtitle-2">Hamed Taherpour</v-list-item-title>
-                <v-list-item-subtitle class="caption">toplearn</v-list-item-subtitle>
+                <v-list-item-title class="subtitle-2">حامد طاهرپور</v-list-item-title>
+                <v-list-item-subtitle class="caption">تاپ لرن</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -83,7 +86,7 @@
                   <v-icon v-text="minIcon"></v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>Collapse Menu</v-list-item-title>
+                  <v-list-item-title>جمع کردن منو</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list-item-group>

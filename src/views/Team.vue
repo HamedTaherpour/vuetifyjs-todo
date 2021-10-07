@@ -1,6 +1,6 @@
 <template>
   <div class="fill-height pa-5">
-    <h2 class="subtitle-2 grey--text">Team</h2>
+    <h2 class="subtitle-2 grey--text">تیم</h2>
     <v-container class="my-6">
       <v-row>
         <v-col cols="12" sm="6" md="4" lg="3" v-for="person in team" :key="person.name">
@@ -31,7 +31,7 @@
               <v-card-actions>
                 <v-btn outlined>
                   <v-icon small left>mdi-message</v-icon>
-                  <span>Message</span>
+                  <span>پیام</span>
                 </v-btn>
               </v-card-actions>
             </v-card>
